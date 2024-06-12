@@ -6,32 +6,9 @@
 .error {
   color: #fc8181;
   font-size: 0.75rem;
+  font-weight: bold;
   text-align: left;
   margin-top: 0.25rem;
-}
-
-.checkbox {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-nav h3 {
-  margin: 1rem;
-  cursor: pointer;
-  color: #718096;
-}
-
-nav h3:hover {
-  color: white;
 }
 
 form {

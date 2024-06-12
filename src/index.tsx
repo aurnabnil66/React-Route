@@ -6,6 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { NavigationBar, About, Home, Contact } from "./Components";
 import "./App.css";
+import Welcome from "./Components/Welcome";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,6 +21,7 @@ root.render(
       <Route path="/" element={<Home />}></Route>
       <Route path="/about" element={<About />}></Route>
       <Route path="/contact" element={<Contact />}></Route>
+      <Route path="/welcome" element={<Welcome />}></Route>
     </Routes>
   </Router>
 );

@@ -3,7 +3,6 @@ import * as yup from "yup";
 const passwordRules =
   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-const contactNumberRules = /^\d+$/;
 /*
 At least 8 characters long.
 Contains at least one uppercase letter.
@@ -11,6 +10,8 @@ Contains at least one lowercase letter.
 Contains at least one digit.
 Contains at least one special character (e.g., !@#$%^&*).
 */
+
+const contactNumberRules = /^\d+$/;
 
 export const BasicSchema = yup.object().shape({
   email: yup.string().email("Please enter a valid email").required("Required"),

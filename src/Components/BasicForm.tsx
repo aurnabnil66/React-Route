@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { BasicSchema } from "../Schemas/BasicSchema";
 import { FormikHelpers } from "formik";
+import { useNavigate } from "react-router-dom";
 
 interface FormValues {
   email: string;
@@ -9,16 +10,33 @@ interface FormValues {
   confirmPassword: string;
 }
 
-const onSubmit = async (
-  values: FormValues,
-  actions: FormikHelpers<FormValues>
-) => {
-  // Handle form submission
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
+const staticValues: FormValues = {
+  email: "admin@gmail.com",
+  contactNumber: "01926829335",
+  password: "P@ssw0rd1",
+  confirmPassword: "P@ssw0rd1",
 };
 
 function BasicForm() {
+  const navigate = useNavigate();
+  const onSubmit = async (
+    values: FormValues,
+    actions: FormikHelpers<FormValues>
+  ) => {
+    // comparing the input values
+    if (
+      values.email === staticValues.email &&
+      values.contactNumber === staticValues.contactNumber &&
+      values.password === staticValues.password
+    ) {
+      alert("Successfully logged in");
+      navigate("/welcome");
+    }
+
+    // Handle form submission
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    actions.resetForm();
+  };
   const {
     values,
     errors,
@@ -37,7 +55,7 @@ function BasicForm() {
     onSubmit,
     validationSchema: BasicSchema,
   });
-  console.log(errors);
+  console.log(values);
   return (
     <form onSubmit={handleSubmit} autoComplete="off">
       <label htmlFor="email">Email</label>
@@ -48,7 +66,7 @@ function BasicForm() {
         type="email"
         placeholder="Enter your email"
         onBlur={handleBlur}
-        className={errors.email && touched.email ? "input-error" : " "} // errors.email ? it means thereis an error in the email
+        className={errors.email && touched.email ? "input-error" : " "} // errors.email ? it means there is an error in the email
       />
       {errors.email && touched.email && <p className="error">{errors.email}</p>}
       <label htmlFor="age">Contact Number</label>
